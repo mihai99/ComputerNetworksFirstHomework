@@ -1,0 +1,9 @@
+[2019-10-22 18:13:59.573] [sharedprocess] [info] main {"machineId":"ddb23acb7b3844a0bf2be827d0bcb7b9810206dcef901fafe48ac455896e2e55"}
+[2019-10-22 18:14:00.552] [sharedprocess] [info] Deleted from disk ms-vscode.cpptools /home/blaga/.vscode/extensions/ms-vscode.cpptools-0.25.1
+[2019-10-22 18:14:04.853] [sharedprocess] [info] Installing extension: ms-vscode.cpptools
+[2019-10-22 18:14:06.211] [sharedprocess] [info] Downloaded extension: ms-vscode.cpptools /tmp/4342a549-d057-47e8-bcbb-e44ab6d7c224
+[2019-10-22 18:14:10.341] [sharedprocess] [info] Extracted extension to /home/blaga/.vscode/extensions/.ms-vscode.cpptools-0.26.0: ms-vscode.cpptools
+[2019-10-22 18:14:10.341] [sharedprocess] [info] Renamed to /home/blaga/.vscode/extensions/ms-vscode.cpptools-0.26.0
+[2019-10-22 18:14:10.376] [sharedprocess] [info] Installation completed. ms-vscode.cpptools
+[2019-10-22 18:14:10.410] [sharedprocess] [info] Extensions installed successfully: ms-vscode.cpptools
+[2019-10-22 18:14:39.557] [sharedprocess] [info] Starting to clean up unused language packs.
