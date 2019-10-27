@@ -52,10 +52,10 @@ int main() {
                     }
                     case COMMAND_MYFIND:
                     {
-                        close(socketPair[1]); 
+                         close(socketPair[1]); 
                         char myfindResponse[1024] = "";
                         int lenght = getResponseLenghtFromPrefix(socketPair[0]);
-                        read(socketPair[0], myfindResponse, lenght);
+                        read(socketPair[0], myfindResponse, 1000);
                         printf("\n%s\n", myfindResponse); 
                         close(socketPair[0]);
                         break;
@@ -96,11 +96,10 @@ int main() {
                         
                         if(file.found == true) 
                         {            
-                            printf("aa \n");
-                            getFileInfos(file.filePath, response);  
+                            response = getFileInfos(file.filePath);  
                         }
-                        buildResponsePrefixedByLenght(response);
-                        write(socketPair[1], &response, strlen(response));
+                        char *prefixedResponse = buildResponsePrefixedByLenght(response);
+                        write(socketPair[1], prefixedResponse, strlen(prefixedResponse));
                         close(socketPair[1]);
                         exit(COMMAND_MYFIND);
                     }
