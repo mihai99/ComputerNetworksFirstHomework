@@ -51,10 +51,11 @@ void serchForFile(char* fileName, char *basePath, struct searchedFile *searchedF
   
     closedir(directory);     
 }
-void buildResponsePrefixedByLenght(char *response){
-    char responseAux[1024];
-    strcpy(responseAux, response);
-    sprintf(response, "%ld~%s", strlen(response), responseAux);
+char* buildResponsePrefixedByLenght(char *response){
+    char *responseAux = malloc(sizeof(char) * strlen(response));
+    //strcpy(responseAux, strlen(response));
+    sprintf(responseAux, "%ld~%s", strlen(response), response);
+    return responseAux;
 }
 
 int getResponseLenghtFromPrefix(int source) {

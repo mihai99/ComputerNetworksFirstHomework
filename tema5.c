@@ -92,16 +92,15 @@ int main() {
                         struct searchedFile file;
                         file.found = false;
                         serchForFile(removeNewlineFromString(argument), "./", &file);
-                        char response[1024];
-                        strcpy(response, "File not found \n");
+                        char *response = "File not found \n";
                         
                         if(file.found == true) 
                         {            
-                            printf("found: \n");
-                            writeFileInfos(file.filePath, response);  
+                            printf("aa \n");
+                            getFileInfos(file.filePath, response);  
                         }
                         buildResponsePrefixedByLenght(response);
-                        write(socketPair[1], response, strlen(response));
+                        write(socketPair[1], &response, strlen(response));
                         close(socketPair[1]);
                         exit(COMMAND_MYFIND);
                     }

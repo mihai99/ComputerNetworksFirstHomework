@@ -25,17 +25,10 @@ bool logginWithUsername(char* username) {
     return false;
 }
 
-void writeFileInfos(char *filaPath, char *response) {
+char* getFileInfos(char *filaPath) {
     struct stat statBuffer;
     stat(filaPath, &statBuffer);
-    char *aux;
-    sprintf(response, "File path:                %s \n", filaPath);
-    sprintf(aux, "Last file modification:   %s", ctime(&statBuffer.st_mtime));
-    strcat(response, aux);
-    sprintf(aux, "Permisions:               %lo (octal)\n", ((unsigned long) statBuffer.st_mode));
-    strcat(response, aux);
-    sprintf(aux, "File size:                %lld bytes\n",  (long long) statBuffer.st_size);
-    strcat(response, aux);
-    sprintf(aux, "Blocks allocated:         %lld\n",  (long long) statBuffer.st_blocks);
-    strcat(response, aux);
+    char *aux = malloc(sizeof(char));
+    sprintf(aux, "File path:              %s\nLast file modification: %sPermisions:             %lo (octal)\nFile size:              %lld bytes\nBlocks allocated:       %lld\n", filaPath, ctime(&statBuffer.st_mtime), ((unsigned long) statBuffer.st_mode),  (long long) statBuffer.st_size,  (long long) statBuffer.st_blocks);
+    return aux;
 }
