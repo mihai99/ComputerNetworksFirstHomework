@@ -27,8 +27,17 @@ bool logginWithUsername(char* username) {
 
 char* getFileInfos(char *filaPath) {
     struct stat statBuffer;
-    stat(filaPath, &statBuffer);
+    int statResponse = stat(filaPath, &statBuffer);
     char *aux = malloc(sizeof(char));
-    sprintf(aux, "File path:              %s\nLast file modification: %sPermisions:             %lo (octal)\nFile size:              %lld bytes\nBlocks allocated:       %lld\n", filaPath, ctime(&statBuffer.st_mtime), ((unsigned long) statBuffer.st_mode),  (long long) statBuffer.st_size,  (long long) statBuffer.st_blocks);
-    return aux;
+    if(statResponse == 0)
+    {
+        char rightsString[9];
+        convetAccessRights(statBuffer.st_mode, rightsString);
+        sprintf(aux, "File path:              %s\nLast file modification: %sPermisions:             %lo (%s)\nFile size:              %lld bytes\nBlocks allocated:       %lld\n", filaPath, ctime(&statBuffer.st_mtime), ((unsigned long) statBuffer.st_mode), rightsString, (long long) statBuffer.st_size,  (long long) statBuffer.st_blocks);
+        return aux;
+    }
+    else 
+    {
+        return "File not found";
+    }
 }

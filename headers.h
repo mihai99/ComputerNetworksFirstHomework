@@ -5,11 +5,13 @@
 #define COMMAND_MYFIND 2
 #define COMMAND_MYSTAT 3
 #define COMMAND_QUIT 4
+#define COMMAND_LOGGOUT 6
 #define INVALID_COMMAND 5
 #include <stdio.h>
+#include <string.h>
+#include <dirent.h>
 #include <stdlib.h>
 #include <stdbool.h> 
-#include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/stat.h>

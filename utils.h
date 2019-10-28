@@ -1,10 +1,44 @@
-#include <string.h>
-#include <dirent.h>
+#include "headers.h"
+
+struct command
+{
+   int type;
+   char *argument;
+};
+
 struct searchedFile {
     bool found;
     char fileName[256];
     char filePath[256];
 };
+
+struct command getCommandType(char* input) {
+    struct command requiredCommand;
+    requiredCommand.argument = "";
+    requiredCommand.type = INVALID_COMMAND;
+    if(strstr(input, "login :") != NULL){
+        requiredCommand.type = COMMAND_LOGN;
+        requiredCommand.argument = strtok(input+8, " ");
+    }
+    else if(strstr(input, "myfind") != NULL) {
+        requiredCommand.type = COMMAND_MYFIND;
+        requiredCommand.argument = strtok(input + 7, " ");
+    }
+    else if(strstr(input, "mystat") != NULL) {
+        requiredCommand.type = COMMAND_MYSTAT;
+        requiredCommand.argument = strtok(input + 7, " ");
+    }
+    else if(strstr(input, "quit") != NULL) {
+        requiredCommand.type = COMMAND_QUIT;
+        requiredCommand.argument = "";
+    }
+    else if(strstr(input, "logout") != NULL) {
+        requiredCommand.type = COMMAND_LOGGOUT;
+        requiredCommand.argument = "";
+    }
+    return requiredCommand;
+}
+
 
 char* removeNewlineFromString(char* input)
 {
@@ -53,7 +87,6 @@ void serchForFile(char* fileName, char *basePath, struct searchedFile *searchedF
 }
 char* buildResponsePrefixedByLenght(char *response){
     char *responseAux = malloc(sizeof(char) * strlen(response));
-    //strcpy(responseAux, strlen(response));
     sprintf(responseAux, "%ld~%s", strlen(response), response);
     return responseAux;
 }
@@ -80,4 +113,17 @@ int getNumberlenght(int number) {
         lenght ++;
     }
     return lenght;
+}
+
+void convetAccessRights(mode_t fileStMode, char rights[])
+{
+    rights[0] = fileStMode & S_IRUSR ? 'r' : '-';
+    rights[1] = fileStMode & S_IWUSR ? 'w' : '-';
+    rights[2] = fileStMode & S_IXUSR ? 'x' : '-';
+    rights[3] = fileStMode & S_IRGRP ? 'r' : '-';
+    rights[4] = fileStMode & S_IWGRP ? 'w' : '-';
+    rights[5] = fileStMode & S_IXGRP ? 'x' : '-';
+    rights[6] = fileStMode & S_IROTH ? 'r' : '-';
+    rights[7] = fileStMode & S_IWOTH ? 'w' : '-';
+    rights[8] = fileStMode & S_IXOTH ? 'x' : '-';
 }

@@ -1,5 +1,4 @@
 
-#include "commandHelpers.h"
 #include "commandRunners.h"
 #include "headers.h"
 
@@ -13,7 +12,6 @@ int main() {
         printf("Give command: ");
         fgets(command, 100, stdin);
         struct command commandToExecute = getCommandType(removeNewlineFromString(command));       
-
         if(commandToExecute.type != INVALID_COMMAND)
         {
             int argumentPipe[2], loginResponsPipe[2], socketPair[2];
@@ -25,9 +23,18 @@ int main() {
             if(childPid > 0) {
                 //PARENT
                 close(argumentPipe[0]);                
-                write(argumentPipe[1], commandToExecute.argument, (strlen(commandToExecute.argument)+1));                
-                wait(&childPid);  
-                switch (commandToExecute.type)
+                write(argumentPipe[1], commandToExecute.argument, (strlen(commandToExecute.argument)+1));    
+                
+                int stats;        
+                waitpid(childPid, &stats, 0);
+                
+                if(!WIFEXITED(stats)) 
+                {
+                    perror("child not exited normally");
+                    exit(0);
+                }
+                int exitStatus = WEXITSTATUS(stats);
+                switch (exitStatus)
                 {
                     case COMMAND_LOGN: 
                     {
@@ -43,8 +50,10 @@ int main() {
                             case 1: 
                                 printf("You successfully logged in, now you can use other commands \n");
                                 loggedIn = true;
+                                break;
                             case 2:
                                 printf("You are allready logged in \n");
+                                break;
                             default:
                                 break;
                         }
@@ -52,13 +61,38 @@ int main() {
                     }
                     case COMMAND_MYFIND:
                     {
-                         close(socketPair[1]); 
+                        close(socketPair[1]); 
                         char myfindResponse[1024] = "";
                         int lenght = getResponseLenghtFromPrefix(socketPair[0]);
-                        read(socketPair[0], myfindResponse, 1000);
-                        printf("\n%s\n", myfindResponse); 
+                        read(socketPair[0], myfindResponse, lenght);
+                        printf("%s", myfindResponse); 
                         close(socketPair[0]);
                         break;
+                    }
+                    case COMMAND_MYSTAT:
+                    {
+                        char *response = getFileInfos(commandToExecute.argument);
+                        printf("resp: %s \n", response);
+                        break;
+                    }
+                    case COMMAND_LOGGOUT: 
+                    {
+                        if(loggedIn)
+                        {
+                            printf("You logged out\n");
+                            loggedIn = false;
+                            break;
+                        }
+                        {
+                            printf("You haven't logged in\n");
+                            break;
+                        }
+                        break;
+                    }
+                    case COMMAND_QUIT:
+                    {
+                        printf("Quitting...\n");
+                        exit(0);
                     }
                     default:
                         break;
@@ -73,12 +107,12 @@ int main() {
                 {
                     case COMMAND_LOGN: 
                     {
-                        bool tryLogin = false;
+                        bool login = false;
                         close(loginResponsPipe[0]);
                         if(loggedIn == false)
                         {
-                            tryLogin = logginWithUsername(argument);                       
-                            write(loginResponsPipe[1], (tryLogin ? "1" : "0"), 1);
+                            login = logginWithUsername(argument);                       
+                            write(loginResponsPipe[1], (login ? "1" : "0"), 1);
                         }
                         else
                         {
@@ -88,20 +122,38 @@ int main() {
                     }
                     case COMMAND_MYFIND: 
                     {
-                        close(socketPair[0]); 
-                        struct searchedFile file;
-                        file.found = false;
-                        serchForFile(removeNewlineFromString(argument), "./", &file);
                         char *response = "File not found \n";
-                        
-                        if(file.found == true) 
-                        {            
-                            response = getFileInfos(file.filePath);  
+                        close(socketPair[0]); 
+                        if(loggedIn == false)
+                        {
+                            response = "Please log in to use other commands\n";
+                        }
+                        else 
+                        {
+                            struct searchedFile file;
+                            file.found = false;
+                            serchForFile(removeNewlineFromString(argument), "./", &file);
+                            if(file.found == true) 
+                            {            
+                                response = getFileInfos(file.filePath);  
+                            }
                         }
                         char *prefixedResponse = buildResponsePrefixedByLenght(response);
                         write(socketPair[1], prefixedResponse, strlen(prefixedResponse));
                         close(socketPair[1]);
                         exit(COMMAND_MYFIND);
+                    }
+                    case COMMAND_MYSTAT:
+                    {
+                        exit(COMMAND_MYSTAT);
+                    }
+                    case COMMAND_QUIT:
+                    {
+                        exit(COMMAND_QUIT);
+                    }
+                    case COMMAND_LOGGOUT:
+                    {
+                        exit(COMMAND_LOGGOUT);                        
                     }
                     default:
                     {
@@ -115,8 +167,5 @@ int main() {
         {
             printf("invalid command, please try again \n");
         }
-                   
     }  
-    
- 
 }
