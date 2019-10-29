@@ -1,0 +1,241 @@
+Looking for git in: git
+Using git 2.17.1 from git
+> git rev-parse --show-toplevel
+> git rev-parse --git-dir
+> git config --get commit.template
+Open repository: /home/blaga/Desktop/tema5
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :tema5.c
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :headers.h
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :tema5.c
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose

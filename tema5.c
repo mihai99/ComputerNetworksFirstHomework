@@ -26,10 +26,10 @@ int main() {
                 //PARENT
                 close(argumentPipe[0]);                
                 write(argumentPipe[1], commandToExecute.argument, (strlen(commandToExecute.argument)+1));    
-                
+                int fifo = open(FIFO_PATH, O_RDONLY | O_NONBLOCK);
                 int stats;        
-                waitpid(childPid, &stats, 0);
                 
+                waitpid(childPid, &stats, 0);
                 if(!WIFEXITED(stats)) 
                 {
                     perror("child not exited normally");
@@ -73,11 +73,10 @@ int main() {
                     }
                     case COMMAND_MYSTAT:
                     {
-                        char myStatResponse[1024] = "";
-                        int fd = open(FIFO_PATH, O_RDONLY | O_NONBLOCK);
-                        int lenght = getResponseLenghtFromPrefix(fd);
-                        read(fd, myStatResponse, lenght);
-                        close(fd);
+                        char myStatResponse[1024] = "";                       
+                        int lenght = getResponseLenghtFromPrefix(fifo);
+                        read(fifo, myStatResponse, lenght);
+                        close(fifo);
                         printf("\n%s\n", myStatResponse);
                         break;
                     }
@@ -139,7 +138,7 @@ int main() {
                     {
                         char *response = findStatsOfFile(argument, false, loggedIn);
                         mkfifo(FIFO_PATH, 0666);
-                        int fd = open(FIFO_PATH, O_WRONLY);
+                        int fd = open(FIFO_PATH, O_WRONLY | O_NONBLOCK);
                         char *prefixedResponse = buildResponsePrefixedByLenght(response);
                         write(fd, prefixedResponse, strlen(prefixedResponse));
                         close(fd);
