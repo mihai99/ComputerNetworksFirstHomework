@@ -127,3 +127,20 @@ void convetAccessRights(mode_t fileStMode, char rights[])
     rights[7] = fileStMode & S_IWOTH ? 'w' : '-';
     rights[8] = fileStMode & S_IXOTH ? 'x' : '-';
 }
+
+char* getFileInfos(char *filaPath) {
+    struct stat statBuffer;
+    int statResponse = stat(filaPath, &statBuffer);
+    char *aux = malloc(sizeof(char));
+    if(statResponse == 0)
+    {
+        char rightsString[9];
+        convetAccessRights(statBuffer.st_mode, rightsString);
+        sprintf(aux, "File path:              %s\nLast file modification: %sPermisions:             %lo (%s)\nFile size:              %lld bytes\nBlocks allocated:       %lld\n", filaPath, ctime(&statBuffer.st_mtime), ((unsigned long) statBuffer.st_mode), rightsString, (long long) statBuffer.st_size,  (long long) statBuffer.st_blocks);
+        return aux;
+    }
+    else 
+    {
+        return "File not found\n";
+    }
+}

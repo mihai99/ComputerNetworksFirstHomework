@@ -18,6 +18,8 @@ int main() {
             pipe(argumentPipe);
             pipe(loginResponsPipe);
             socketpair(AF_UNIX, SOCK_STREAM, 0, socketPair);
+           
+
             int childPid = fork();
 
             if(childPid > 0) {
@@ -44,15 +46,15 @@ int main() {
                         switch (loginResponse - '0')
                         {
                             case 0:
-                                printf("Loggin failed, please try aggain \n");
+                                printf("\nLoggin failed, please try aggain \n\n");
                                 loggedIn = false;
                                 break;
                             case 1: 
-                                printf("You successfully logged in, now you can use other commands \n");
+                                printf("\nYou successfully logged in, now you can use other commands \n\n");
                                 loggedIn = true;
                                 break;
                             case 2:
-                                printf("You are allready logged in \n");
+                                printf("\nYou are allready logged in \n\n");
                                 break;
                             default:
                                 break;
@@ -65,33 +67,37 @@ int main() {
                         char myfindResponse[1024] = "";
                         int lenght = getResponseLenghtFromPrefix(socketPair[0]);
                         read(socketPair[0], myfindResponse, lenght);
-                        printf("%s", myfindResponse); 
+                        printf("\n%s\n", myfindResponse); 
                         close(socketPair[0]);
                         break;
                     }
                     case COMMAND_MYSTAT:
                     {
-                        char *response = getFileInfos(commandToExecute.argument);
-                        printf("resp: %s \n", response);
+                        char myStatResponse[1024] = "";
+                        int fd = open(FIFO_PATH, O_RDONLY | O_NONBLOCK);
+                        int lenght = getResponseLenghtFromPrefix(fd);
+                        read(fd, myStatResponse, lenght);
+                        close(fd);
+                        printf("\n%s\n", myStatResponse);
                         break;
                     }
                     case COMMAND_LOGGOUT: 
                     {
                         if(loggedIn)
                         {
-                            printf("You logged out\n");
+                            printf("\nYou logged out\n\n");
                             loggedIn = false;
                             break;
                         }
                         {
-                            printf("You haven't logged in\n");
+                            printf("\nYou haven't logged in\n\n");
                             break;
                         }
                         break;
                     }
                     case COMMAND_QUIT:
                     {
-                        printf("Quitting...\n");
+                        printf("\nQuitting...\n\n");
                         exit(0);
                     }
                     default:
@@ -122,22 +128,8 @@ int main() {
                     }
                     case COMMAND_MYFIND: 
                     {
-                        char *response = "File not found \n";
                         close(socketPair[0]); 
-                        if(loggedIn == false)
-                        {
-                            response = "Please log in to use other commands\n";
-                        }
-                        else 
-                        {
-                            struct searchedFile file;
-                            file.found = false;
-                            serchForFile(removeNewlineFromString(argument), "./", &file);
-                            if(file.found == true) 
-                            {            
-                                response = getFileInfos(file.filePath);  
-                            }
-                        }
+                        char *response = findStatsOfFile(argument, true, loggedIn);
                         char *prefixedResponse = buildResponsePrefixedByLenght(response);
                         write(socketPair[1], prefixedResponse, strlen(prefixedResponse));
                         close(socketPair[1]);
@@ -145,6 +137,12 @@ int main() {
                     }
                     case COMMAND_MYSTAT:
                     {
+                        char *response = findStatsOfFile(argument, false, loggedIn);
+                        mkfifo(FIFO_PATH, 0666);
+                        int fd = open(FIFO_PATH, O_WRONLY);
+                        char *prefixedResponse = buildResponsePrefixedByLenght(response);
+                        write(fd, prefixedResponse, strlen(prefixedResponse));
+                        close(fd);
                         exit(COMMAND_MYSTAT);
                     }
                     case COMMAND_QUIT:

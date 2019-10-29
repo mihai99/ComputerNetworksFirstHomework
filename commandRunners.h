@@ -25,19 +25,25 @@ bool logginWithUsername(char* username) {
     return false;
 }
 
-char* getFileInfos(char *filaPath) {
-    struct stat statBuffer;
-    int statResponse = stat(filaPath, &statBuffer);
-    char *aux = malloc(sizeof(char));
-    if(statResponse == 0)
+char* findStatsOfFile(char* fileName, bool searchForFile, bool isLoggedIn)
+{
+    char *response = malloc(sizeof(char));
+    struct searchedFile file;
+    file.found = false;
+    if(isLoggedIn == false)
     {
-        char rightsString[9];
-        convetAccessRights(statBuffer.st_mode, rightsString);
-        sprintf(aux, "File path:              %s\nLast file modification: %sPermisions:             %lo (%s)\nFile size:              %lld bytes\nBlocks allocated:       %lld\n", filaPath, ctime(&statBuffer.st_mtime), ((unsigned long) statBuffer.st_mode), rightsString, (long long) statBuffer.st_size,  (long long) statBuffer.st_blocks);
-        return aux;
+        response = "Please log in to use other commands\n";
+        return response;
     }
-    else 
+    else if(searchForFile)
     {
-        return "File not found";
-    }
+        serchForFile(removeNewlineFromString(fileName), "./", &file);           
+    } 
+    else if(!searchForFile)
+    {
+        strcpy(file.filePath, removeNewlineFromString(fileName));
+    }    
+    response = getFileInfos(file.filePath);
+    
+    return response;
 }
