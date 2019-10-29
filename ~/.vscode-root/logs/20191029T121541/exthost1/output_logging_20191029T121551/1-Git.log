@@ -285,3 +285,35 @@ Open repository: /home/blaga/Desktop/tema5
 > git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
 > git for-each-ref --format %(refname) %(objectname) --sort -committerdate
 > git remote --verbose
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :headers.h
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :headers.h
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse implement-fifo-mystat
+> git rev-parse --symbolic-full-name implement-fifo-mystat@{u}
+> git rev-list --left-right implement-fifo-mystat...refs/remotes/origin/implement-fifo-mystat
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :headers.h
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git rev-parse demo
+> git rev-parse --symbolic-full-name demo@{u}
+fatal: no upstream configured for branch 'demo'
+> git for-each-ref --format %(refname) %(objectname) --sort -committerdate
+> git remote --verbose
+> git show :headers.h
