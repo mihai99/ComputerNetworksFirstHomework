@@ -1,6 +1,6 @@
 #pragma once
 #define CONFIG_FILE "config"
-#define FIFO_PATH "myStatFifo"
+#define FIFO_PATH "/tmp/myStatFifo"
 #define COMMAND_LOGN 1
 #define COMMAND_MYFIND 2
 #define COMMAND_MYSTAT 3
